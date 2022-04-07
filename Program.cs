@@ -6,7 +6,7 @@ namespace AddressBookSystem
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(">->->->->-> Welcome to Address Book Program <-<-<-<-<-<");
+            //Console.WriteLine(">->->->->-> Welcome to Address Book Program <-<-<-<-<-<");
             //creating object of addressbook
             AddressBook addressBook = new AddressBook();
             //getting Op in Constructor with paratmers
@@ -14,6 +14,11 @@ namespace AddressBookSystem
             takeInputAndAddToContacts(addressBook);
             // called Print method 
             addressBook.print();
+            Console.WriteLine("Enter FirstName of Contact to be edited");
+            string firstNameOfContactToBeEdited = Console.ReadLine();
+            Console.WriteLine("Enter LastName of Contact to be edited");
+            string lastNameOfContactToBeEdited = Console.ReadLine();
+            addressBook.edit(firstNameOfContactToBeEdited, lastNameOfContactToBeEdited);
             Console.ReadLine();
         }
         // take Input And Add To Contacts
