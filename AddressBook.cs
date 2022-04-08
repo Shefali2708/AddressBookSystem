@@ -76,18 +76,19 @@ namespace AddressBookSystem
             foreach (Contact contact in this.contactList)
             {
                 if (contact.fistName == firstName && contact.lastName == lastName)
-                    contactToBeEdited = contact;
+                    //otherwise get the value
+                    
+                this.editThisContact(contactToBeEdited);
             }
             // if First Name And last name is not match with entered data
             //contactToBeEdited == null
-            if (contactToBeEdited == null)
-            {
-                //Error :No such contact exists
-                Console.WriteLine("No such contact exists");
-                return;
-            }
-            //otherwise get the value
-            this.editThisContact(contactToBeEdited);
+            //if (contactToBeEdited == null)
+            // {
+            //    Error :No such contact exists
+            //    Console.WriteLine("No such contact exists");
+            //    return;
+            // }
+           
         }
         /* <summary>
             fetch details and edit This Contact
@@ -97,8 +98,9 @@ namespace AddressBookSystem
         */
         public void editThisContact(Contact contactToBeEdited)
         {
+            bool status = true;
             //if true
-            while (true)
+            while (status == true)
             {
                 //Enter what you want to edit
                 Console.WriteLine("Enter 1 to edit FirstName");
@@ -110,6 +112,8 @@ namespace AddressBookSystem
                 Console.WriteLine("Enter 7 to edit PhoneNumber");
                 Console.WriteLine("Enter 8 to edit Email Id");
                 Console.WriteLine("Enter 9 if Editing is done");
+                Console.WriteLine("Enter 10 if Delete is done");
+
                 //read value
                 int choice = Convert.ToInt32(Console.ReadLine());
                 //switchCase
@@ -168,8 +172,12 @@ namespace AddressBookSystem
                         Console.WriteLine("Editing done.New Contact :-");
                         this.printSpecificContact(contactToBeEdited);
                         return;
+                    //default
+                    default:
+                        status = false;
+                        break;
                 }
-            }
+            }//while end
         }
         //Print Data After Edit
         public void printSpecificContact(Contact contact)
